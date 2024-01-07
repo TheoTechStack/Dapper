@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using Dapper;
 using DapperDemo.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Identity.Client.Extensibility;
 
 namespace DapperDemo 
@@ -11,8 +14,14 @@ namespace DapperDemo
     {
         static void Main(string[] args)
         {
+        IConfigurationBuilder builder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json"); 
+                        
+        IConfigurationRoot configuration = builder.Build();
+
+
             Console.WriteLine("!");
-            DataContext dataContext = new DataContext();
+            DataContext dataContext = new DataContext(configuration);
             string sqlCommand = "SELECT GETDATE()";
             DateTime dateTime = dataContext.LoadDataSingle<DateTime>(sqlCommand);
             Console.WriteLine(dateTime);
@@ -38,12 +47,12 @@ namespace DapperDemo
                     +"','" + computer.HasWifi
                     +"','" + computer.HasLTE
                     +"','" + computer.ReleaseDate
-                    +"','" + computer.Price
+                    +"','" + computer.Price.ToString("0.00", CultureInfo.InvariantCulture)
                     +"','" + computer.VideoCard
             +"')";
 
             Console.WriteLine(sql);
-            int result = dataContext.ExecuteSqlWithRowCount<Computer>(sql);
+            bool result = dataContext.ExecuteSql<Computer>(sql);
             Console.WriteLine($"output {result}");
 
             string sqlSelect = @"
@@ -67,7 +76,8 @@ namespace DapperDemo
                 Console.WriteLine();
             });        
 
-
+            using StreamWriter openFile = new ("log.txt", append: true);
+            openFile.WriteLine($"\n{sql} \n");
 
         }
     }

@@ -1,0 +1,43 @@
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard ,
+                HasWifi,
+                HasLTE,
+                ReleaseDate , 
+                Price,
+                VideoCard  
+            ) VALUES('x001','True','False','2024/01/07 21:13:49','101,1','3090GTX')
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard ,
+                HasWifi,
+                HasLTE,
+                ReleaseDate , 
+                Price,
+                VideoCard  
+            ) VALUES('x001','True','False','2024/01/07 21:17:07','101','3090GTX')
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard ,
+                HasWifi,
+                HasLTE,
+                ReleaseDate , 
+                Price,
+                VideoCard  
+            ) VALUES('x001','True','False','2024/01/07 21:20:00','101.10','3090GTX')
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard ,
+                HasWifi,
+                HasLTE,
+                ReleaseDate , 
+                Price,
+                VideoCard  
+            ) VALUES('x001','True','False','2024/01/07 21:22:33','101.10','3090GTX') 
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard ,
+                HasWifi,
+                HasLTE,
+                ReleaseDate , 
+                Price,
+                VideoCard  
+            ) VALUES('x001','True','False','2024/01/07 21:22:55','101.10','3090GTX') 
+
